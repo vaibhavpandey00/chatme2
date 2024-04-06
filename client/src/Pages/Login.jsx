@@ -26,10 +26,7 @@ const Login = () => {
 
     return (
         <div style={{
-            // background: "linear-gradient(#e66465, #9198e5)"
-            // backgroundImage: "linear-gradient(to top, #051937, #004d7a, #008793, #00bf72, #a8eb12)"
             backgroundImage: "linear-gradient(to top, #6785b1, #50a7c6, #5cc7c6, #96e2b8, #e0f6ae)"
-
         }}>
             <Container sx={{
                 height: "100vh",
@@ -38,17 +35,19 @@ const Login = () => {
                 alignItems: 'center',
             }}>
                 <Container component={"main"} maxWidth="xs">
-                    <Paper elevation={5} sx={{
+                    <Paper elevation={6} sx={{
                         padding: 4,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        // border: 'solid'
+                        backdropFilter: "blur(16px)",
+                        bgcolor: "rgba(255, 255, 255, 0.4)",
+                        borderRadius: 7
                     }} >
 
                         {isLogin ?
                             <>
-                                <Typography variant="h5">
+                                <Typography variant="h5" color={"black"}>
                                     Login
                                 </Typography>
                                 <form onSubmit={handleLogin}>

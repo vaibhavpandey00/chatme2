@@ -1,17 +1,22 @@
 import { Avatar, Stack, Typography } from '@mui/material';
-import React from 'react'
+import React from 'react';
+import { Face as FaceIcon, AlternateEmail as UsernameIcon, CalendarMonthRounded as CalenderIcon } from "@mui/icons-material";
+import moment from "moment";
 
 const Profile = () => {
     return (
-        <Stack spacing={"2rem"} direction={"column"} alignItems={"center"}>
+        <Stack spacing={"2rem"} direction={"column"} alignItems={"center"} mt={4} gap={3}>
             <Avatar sx={{
                 width: 200,
                 height: 200,
                 objectFit: "contain",
                 marginBottom: "1rem",
-                border: "5px solid black",
+                border: "5px solid white",
             }} />
-            <ProfileCard text={"lorem impuls 10"} heading={"Hay! I'm using chatMe"} />
+            <ProfileCard heading={"Bio"} text={"lorem impuls 10"} />
+            <ProfileCard heading={"Username"} text={"JoneDoe69"} Icon={<UsernameIcon fontSize='medium' color='primary' />} />
+            <ProfileCard heading={"Name"} text={"Jone Doe"} Icon={<FaceIcon fontSize='medium' color='primary' />} />
+            <ProfileCard heading={"Joined"} text={moment("2024-01-02T00:00:00.000Z").fromNow()} Icon={<CalenderIcon fontSize='medium' color='primary' />} />
         </Stack>
     )
 };

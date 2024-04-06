@@ -2,7 +2,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProtectRoute from './Components/auth/ProtectRoute';
-import LayoutLoader from "./Components/layout/Loaders"
+import { LayoutLoader } from "./Components/layout/Loaders"
 
 const Login = lazy(() => import("./Pages/Login"));
 const Chats = lazy(() => import("./Pages/Chat"));
@@ -18,12 +18,12 @@ const App = () => {
       <Suspense fallback={<LayoutLoader />}>
         <Routes>
           <Route element={<ProtectRoute user={user} />}>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/chat/:chatId" element={<Chats />} />
-            <Route path="/group" element={<Groups />} />
+            <Route path="/groups" element={<Groups />} />
           </Route>
 
-          <Route path="/" element={<ProtectRoute user={!user}><Login /></ProtectRoute>} />
+          <Route path="/login" element={<ProtectRoute user={!user}><Login /></ProtectRoute>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

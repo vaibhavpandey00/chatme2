@@ -1,9 +1,10 @@
 import { AppBar, Backdrop, Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { Menu as MenuIcon, Search as SearchIcon, Add as AddIcon, Group as GroupIcon, Logout as LogoutIcon, Notifications as NotificationIcon } from "@mui/icons-material";
-import SearchDialog from "../dialogs/Search";
-import NotificationsDialog from "../dialogs/Notifications";
-import NewGroupDialog from "../dialogs/NewGroup";
+
+const SearchDialog = lazy(() => import("../dialogs/Search"));
+const NotificationsDialog = lazy(() => import("../dialogs/Notifications"));
+const NewGroupDialog = lazy(() => import("../dialogs/NewGroup"));
 
 const Header = () => {
 
@@ -63,7 +64,7 @@ const Header = () => {
                         <Typography sx={{ display: { xs: "none", sm: "block" } }}>ChatMe</Typography>
 
                         <Box sx={{
-                            display: { xs: "block", sm: "none" }
+                            display: { xs: "block", sm: "none" },
                         }}>
                             <IconButton color="inherit" size="large">
                                 <MenuIcon />
