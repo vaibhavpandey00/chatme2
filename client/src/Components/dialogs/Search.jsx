@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Dialog, Stack, DialogTitle, TextField, InputAdornment, List, ListItem, ListItemText } from "@mui/material";
-import { Search as SearchIcon } from '@mui/icons-material';
 import { useInputValidation } from "6pp";
-import UserItem from '../Shared/UserItem';
+import { Search as SearchIcon } from '@mui/icons-material';
+import { Dialog, DialogTitle, InputAdornment, List, Stack, TextField } from "@mui/material";
+import React, { useState } from 'react';
 import { sampleUsers } from '../Constans/SampleData';
+import UserItem from '../Shared/UserItem';
 
 
 const Search = () => {

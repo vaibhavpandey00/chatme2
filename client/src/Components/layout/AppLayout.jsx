@@ -29,7 +29,7 @@ const AppLayout = () => WrappedComponent => {
                     backgroundImage: "linear-gradient(to top, #6785b1, #50a7c6, #5cc7c6, #96e2b8, #e0f6ae)"
                 }}>
 
-                    <Grid container height={"calc(100vh - 4rem)"} sx={{ alignItems: "center", justifyContent: "center", padding: { md: 4, sm: 2 }, gap: 2, width: "100%", }}
+                    <Grid container height={"calc(100vh - 4rem)"} sx={{ alignItems: "center", justifyContent: "center", padding: { sm: 2, md: 4 }, gap: 2, width: "100%", }}
                     >
 
                         <Grid item height={"100%"} sx={{ display: { xs: "none", sm: "block" }, width: { sm: "18rem", md: "20rem", lg: "28rem" }, boxShadow: 3, borderRadius: "20px", p: 1, backdropFilter: "blur(16px)", bgcolor: "rgba(255, 255, 255, 0.4)" }}>
@@ -37,7 +37,7 @@ const AppLayout = () => WrappedComponent => {
                             {/* <ChatList chats={[1, 2, 3, 4, 5]} /> */}
                         </Grid>
 
-                        <Grid item height={"100%"} sx={{ boxShadow: 3, borderRadius: "20px", width: { xs: "32rem", md: "32rem", lg: "56.9rem" }, backdropFilter: "blur(16px)", bgcolor: "rgba(255, 255, 255, 0.4)" }}>
+                        <Grid item height={"100%"} sx={{ boxShadow: 3, borderRadius: "20px", width: { xs: "32rem", md: "32rem", lg: "56.9rem" }, backdropFilter: "blur(16px)", bgcolor: "rgba(255, 255, 255, 0.4)", p: 1 }}>
                             <WrappedComponent {...props} />
                         </Grid>
 

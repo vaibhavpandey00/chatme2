@@ -86,17 +86,84 @@ export const sampleUsers = [{
 
 export const sampleNotifications = [
     {
-    sender: {
-        avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
-        name: "Jone Doe",
+        sender: {
+            avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
+            name: "Jone Doe",
+        },
+        _id: "1",
     },
-    _id: "1",
-},
-{
-    sender: {
-        avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
-        name: "Alvin Hill",
+    {
+        sender: {
+            avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
+            name: "Alvin Hill",
+        },
+        _id: "2",
     },
-    _id: "2",
-},
+]
+
+export const sampleMessage = [
+    {
+        attachments: [
+            {
+                publick_id: "azxax",
+                url: "https://www.w3schools.com/howto/img_avatar.png",
+            },
+        ],
+        content: "Hay there! how are you..",
+        _id: "qwertyu",
+        sender: {
+            _id: "user._id",
+            name: "Vibhu",
+        },
+        chat: "chatId",
+        createdAt: "2024-03-10"
+    },
+    {
+        attachments: [
+            {
+                publick_id: "azxax",
+                url: "https://www.w3schools.com/howto/img_avatar.png",
+            },
+        ],
+        content: "Fine what about you..",
+        _id: "qwertyu",
+        sender: {
+            _id: "asdcasd",
+            name: "Vibhu",
+        },
+        chat: "chatId",
+        createdAt: "2024-04-02"
+    },
+    {
+        attachments: [
+            {
+                publick_id: "azxax",
+                url: "https://www.w3schools.com/howto/img_avatar.png",
+            },
+        ],
+        content: "Happy to hear that :)",
+        _id: "qwertyu",
+        sender: {
+            _id: "user._id",
+            name: "Vibhu",
+        },
+        chat: "chatId",
+        createdAt: "2024-04-03"
+    },
+    {
+        attachments: [
+            {
+                publick_id: "azxax",
+                url: "https://www.w3schools.com/howto/img_avatar.png",
+            },
+        ],
+        content: "Fine as well",
+        _id: "qwertyu",
+        sender: {
+            _id: "user._id",
+            name: "Vibhu",
+        },
+        chat: "chatId",
+        createdAt: "2024-04-03"
+    },
 ]

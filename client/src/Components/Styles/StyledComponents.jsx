@@ -24,3 +24,15 @@ border-radius: 1rem;
 // border-top: 1px solid gray;
 // border: 1px solid black
 `;
+
+export const InputBox = styled("input")`
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 0 3rem;
+    font-size: 17px;
+    border-radius: 1.5rem;
+    background-color: 
+
+`;
