@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import Container from '@mui/material/Container'
-import { Avatar, Button, IconButton, Input, Paper, Stack, TextField, Typography } from '@mui/material'
+import { CameraAlt as CameraAltIcon } from '@mui/icons-material';
+import { Container, Avatar, Button, IconButton, Input, Paper, Stack, TextField, Typography } from '@mui/material'
 import { VisuallyHiddenInput } from '../Components/Styles/StyledComponents';
 import { useFileHandler, useInputValidation, useStrongPassword } from "6pp"
 import { usernameValidator } from '../Utils/UnameValidater';
+import LoginBg from "../assets/homebg3.jpeg";
+
+const White = "#fff";
 
 const Login = () => {
 
@@ -26,7 +28,10 @@ const Login = () => {
 
     return (
         <div style={{
-            backgroundImage: "linear-gradient(to top, #6785b1, #50a7c6, #5cc7c6, #96e2b8, #e0f6ae)"
+            // backgroundImage: "linear-gradient(to top, #6785b1, #50a7c6, #5cc7c6, #96e2b8, #e0f6ae)"
+            backgroundImage: `url(${LoginBg})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover"
         }}>
             <Container sx={{
                 height: "100vh",
@@ -40,14 +45,15 @@ const Login = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        backdropFilter: "blur(16px)",
-                        bgcolor: "rgba(255, 255, 255, 0.4)",
-                        borderRadius: 7
+                        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+                        borderRadius: "16px",
+                        backdropFilter: "blur(5.2px)",
+                        bgcolor: "rgba(233, 233, 233, 0.25)"
                     }} >
 
                         {isLogin ?
                             <>
-                                <Typography variant="h5" color={"black"}>
+                                <Typography variant="h5" color={"white"}>
                                     Login
                                 </Typography>
                                 <form onSubmit={handleLogin}>
@@ -59,6 +65,7 @@ const Login = () => {
                                         variant="outlined"
                                         value={username.value}
                                         onChange={username.changeHandler}
+                                        sx={{ input: { color: 'white' } }}
                                     />
 
                                     <TextField
@@ -70,6 +77,7 @@ const Login = () => {
                                         variant="outlined"
                                         value={password.value}
                                         onChange={password.changeHandler}
+                                        sx={{ input: { color: 'white' } }}
                                     />
 
                                     <Button sx={{ marginTop: "1rem" }
@@ -82,12 +90,17 @@ const Login = () => {
                                         Login
                                     </Button>
 
-                                    <Typography textAlign={"center"} m={"1rem"}>OR</Typography>
+                                    <Typography textAlign={"center"} m={"1rem"} color={"white"}>OR</Typography>
 
                                     <Button
                                         fullWidth
                                         variant="text"
+                                        color="primary"
                                         onClick={() => setIsLogin(!isLogin)}
+                                        sx={{
+                                            color: "rgba(255,255,255,0.5)",
+                                            "&:hover": { backgroundColor: "primary.dark", color: "white" }
+                                        }}
                                     >
                                         Sign Up Here
                                     </Button>
@@ -96,7 +109,7 @@ const Login = () => {
                             </> :
 
                             <>
-                                <Typography variant="h5">
+                                <Typography variant="h5" color={"white"} paddingBottom={"1rem"}>
                                     Sign Up
                                 </Typography>
 
@@ -148,6 +161,7 @@ const Login = () => {
                                         variant="outlined"
                                         value={name.value}
                                         onChange={name.changeHandler}
+                                        sx={{ input: { color: 'white' } }}
                                     />
 
                                     <TextField
@@ -158,6 +172,7 @@ const Login = () => {
                                         variant="outlined"
                                         value={username.value}
                                         onChange={username.changeHandler}
+                                        sx={{ input: { color: 'white' } }}
                                     />
 
                                     {username.error && (
@@ -173,6 +188,7 @@ const Login = () => {
                                         margin="normal"
                                         variant="outlined"
                                         type="email"
+                                        sx={{ input: { color: 'white' } }}
                                     />
 
                                     <TextField
@@ -184,6 +200,7 @@ const Login = () => {
                                         variant="outlined"
                                         value={password.value}
                                         onChange={password.changeHandler}
+                                        sx={{ input: { color: 'white' } }}
                                     />
 
                                     {password.error && (
@@ -208,6 +225,7 @@ const Login = () => {
                                         fullWidth
                                         variant="text"
                                         onClick={() => setIsLogin(!isLogin)}
+                                        sx={{ color: 'white', "&:hover": { backgroundColor: "primary.dark", color: "white" } }}
                                     >
                                         Login Here
                                     </Button>

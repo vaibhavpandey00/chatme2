@@ -20,9 +20,7 @@ color: black;
 &:hover {
     background-color: rgba(0,0,0,0.1)
 };
-border-radius: 1rem;
-// border-top: 1px solid gray;
-// border: 1px solid black
+border-radius: 0.7rem;
 `;
 
 export const InputBox = styled("input")`
@@ -36,3 +34,28 @@ export const InputBox = styled("input")`
     background-color: 
 
 `;
+
+export const SearchField = styled("input")`
+padding: 1rem 2rem;
+width: 20vmax;
+border-radius: 1.5rem;
+border: none;
+outline: none;
+font-size: 1.1rem;
+background-color: #f1f1f1;
+`
+
+export const CurveButton = styled("button")`
+border-radius: 1.5rem;
+border: none;
+outline: none;
+font-size: 1.1rem;
+background-color: #f1f1f1;
+padding: 1rem 2rem;
+cursor: pointer;
+color: black;
+&:hover {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+}
+`

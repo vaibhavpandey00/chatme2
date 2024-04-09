@@ -6,7 +6,7 @@ const Home = () => {
     return (
 
         <Box height={"100%"} p={"3rem"} borderRadius={"20px"}>
-            <Typography textAlign={"center"} variant="body2" color="initial">
+            <Typography textAlign={"center"} variant="body1" color="white">
                 Select a Friend to chat
             </Typography>
         </Box>

@@ -55,6 +55,8 @@ const Chat = () => {
                     <InputBox placeholder="Type Message Here..." />
 
                     <IconButton type="submit" sx={{
+                        color: "white",
+                        rotate: "-20deg",
                         "&:hover": {
                             bgcolor: "primary.main"
                         }

@@ -6,6 +6,7 @@ import { Link } from "../Components/Styles/StyledComponents";
 import AvatarCard from '../Components/Shared/AvatarCard';
 import { sampleChats, sampleUsers } from '../Components/Constans/SampleData';
 import UserItem from '../Components/Shared/UserItem';
+import GroupImage from "../assets/homebg6.jpeg";
 
 const ConfirmDelteDialog = lazy(() => import("../Components/dialogs/ConfirmDeleteDialog"));
 const AddMemberDialog = lazy(() => import("../Components/dialogs/AddMemberDialog"));
@@ -63,7 +64,12 @@ const Groups = () => {
 
   const IconBtns = <>
     <Box sx={{
-      display: { xs: "block", sm: "none", position: "fixed", right: "2rem", top: "2rem" },
+      display: {
+        xs: "block", sm: "none",
+        position: "fixed",
+        right: "2rem",
+        top: "2rem"
+      },
     }}>
       <IconButton onClick={handleMobile} >
         <MenuIcon />
@@ -87,24 +93,40 @@ const Groups = () => {
     </Tooltip>
   </>;
 
-  const updateGroupName = () => { setIsEdit(false) }
+  const updateGroupName = () => { setIsEdit(false); console.log("Update Group Name", groupName); }
 
   return (
-    <Grid container height={"100vh"} >
-      <Grid item sm={4}
+    <Grid container height={"100vh"} sx={{
+      padding: "1rem",
+      gap: 2,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundImage: `url(${GroupImage})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover"
+    }} >
+      <Grid item sm={3}
         sx={{
-          display: { xs: "none", sm: "block" }
-        }} bgcolor={"bisque"}
+          display: { xs: "none", sm: "block" },
+          boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+          borderRadius: "16px",
+          backdropFilter: "blur(5.2px)",
+          bgcolor: "rgba(233, 233, 233, 0.25)"
+        }}
       >
         <GroupsList myGroups={sampleChats} chatId={chatId} />
       </Grid>
 
-      <Grid item xs={12} sm={8} sx={{
+      <Grid item height={"90%"} xs={12} sm={8} sx={{
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
         position: "relative",
-        padding: "1rem 3rem"
+        padding: "1rem 3rem",
+        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+        borderRadius: "16px",
+        backdropFilter: "blur(5.2px)",
+        bgcolor: "rgba(233, 233, 233, 0.25)"
       }} >
         {IconBtns}
 
@@ -115,24 +137,25 @@ const Groups = () => {
               <Stack direction={"row"} alignItems={"center"} justifyContent={"center"} padding={"1rem"} >
                 {
                   isEdit ? <>
-                    <TextField value={groupNameUpdated} onChange={e => setGroupNameUpdated(e.target.value)} />
+                    <TextField value={groupNameUpdated} onChange={e => setGroupNameUpdated(e.target.value)} sx={{ input: { color: 'white' } }} />
                     <IconButton onClick={updateGroupName}>
-                      <DoneIcon />
+                      <DoneIcon sx={{ color: "white" }} />
                     </IconButton>
                   </> : <>
-                    <Typography variant="h5"  >
+                    <Typography variant="h5" color="white"  >
                       {groupName}
                     </Typography>
 
                     {groupName && <IconButton onClick={() => setIsEdit(true)}>
-                      <EditIcon />
+                      <EditIcon sx={{ color: "white" }} />
                     </IconButton>}
                   </>
                 }
               </Stack>
 
-              <Typography margin={"2rem"} alignSelf={"flex-start"} variant="5" color="initial">Members</Typography>
+              <Typography margin={"2rem"} textAlign={"center"} variant="5" color="white">Members</Typography>
 
+              {/* Members */}
               <Stack
                 maxWidth={"45rem"}
                 width={"100%"}
@@ -146,14 +169,13 @@ const Groups = () => {
                 height={"50vh"}
                 overflow={"auto"}
               >
-                {/* Members */}
-
                 {
                   sampleUsers.map((i) => (
                     <UserItem user={i} isAdded key={i._id} styling={{
-                      boxShadow: "0 0 0.5rem rgba(0,0,0,0.2)",
+                      boxShadow: "2px 5px 0.7rem rgba(0,0,0,1)",
                       padding: "1rem 2rem",
-                      borderRadius: "1rem"
+                      borderRadius: "1rem",
+                      bgcolor: "white"
                     }} handler={removeMemberHandler} />
                   ))
                 }
@@ -179,9 +201,6 @@ const Groups = () => {
 
           )
         }
-
-
-
 
 
       </Grid>
@@ -215,7 +234,10 @@ const Groups = () => {
 };
 
 const GroupsList = ({ w = "100%", myGroups = [], chatId }) => (
-  <Stack width={w} >
+  <Stack width={w} sx={{
+    height: "100%",
+    overflow: "auto",
+  }}>
     {myGroups.length > 0 ? myGroups.map((group) => <GroupListItem group={group} chatId={chatId} key={group._id} />
     ) : (
       <Typography textAlign={"center"} padding={"1rem"} >
@@ -232,7 +254,7 @@ const GroupListItem = memo(({ group, chatId }) => {
   }} >
     <Stack direction={"row"} spacing={"1rem"} alignItems={"center"} padding={"1rem"} >
       <AvatarCard avatar={avatar} />
-      <Typography > {name} </Typography>
+      <Typography color={"white"} > {name} </Typography>
     </Stack>
   </Link>
 })

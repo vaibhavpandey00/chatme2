@@ -14,9 +14,9 @@ const Profile = () => {
                 border: "5px solid white",
             }} />
             <ProfileCard heading={"Bio"} text={"lorem impuls 10"} />
-            <ProfileCard heading={"Username"} text={"JoneDoe69"} Icon={<UsernameIcon fontSize='medium' color='primary' />} />
-            <ProfileCard heading={"Name"} text={"Jone Doe"} Icon={<FaceIcon fontSize='medium' color='primary' />} />
-            <ProfileCard heading={"Joined"} text={moment("2024-01-02T00:00:00.000Z").fromNow()} Icon={<CalenderIcon fontSize='medium' color='primary' />} />
+            <ProfileCard heading={"Username"} text={"JoneDoe69"} Icon={<UsernameIcon fontSize='medium' />} />
+            <ProfileCard heading={"Name"} text={"Jone Doe"} Icon={<FaceIcon fontSize='medium' />} />
+            <ProfileCard heading={"Joined"} text={moment("2024-01-02T00:00:00.000Z").fromNow()} Icon={<CalenderIcon fontSize='medium' />} />
         </Stack>
     )
 };
@@ -26,8 +26,8 @@ const ProfileCard = ({ text, Icon, heading }) => <Stack direction={"row"} spacin
     {Icon && Icon}
 
     <Stack>
-        <Typography color={"black"} variant="body1">{text}</Typography>
-        <Typography color={"gray"} variant="caption">{heading}</Typography>
+        <Typography color={"white"} variant="body1">{text}</Typography>
+        <Typography color={"rgba(255,255,255,0.4)"} variant="caption">{heading}</Typography>
     </Stack>
 
 </Stack>

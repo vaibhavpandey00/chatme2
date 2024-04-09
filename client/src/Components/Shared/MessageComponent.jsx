@@ -21,9 +21,9 @@ const MessageComponent = ({ message, user }) => {
                 width: "fit-content",
             }}
         >
-            {!sameSender && <Typography fontSize={12} fontWeight={500} color="initial">{sender.name}</Typography>}
+            {!sameSender && <Typography fontSize={12} fontWeight={500} color="rgba(255,255,255,0.7)">{sender.name}</Typography>}
 
-            {sameSender && <Typography fontSize={12} textAlign={"end"} color="initial">You</Typography>}
+            {sameSender && <Typography fontSize={12} textAlign={"end"} color="rgba(255,255,255,0.7)">You</Typography>}
 
             <div
                 style={{

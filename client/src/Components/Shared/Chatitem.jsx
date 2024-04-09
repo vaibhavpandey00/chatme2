@@ -1,6 +1,6 @@
+import { Box, Stack, Typography } from '@mui/material'
 import React, { memo } from 'react'
 import { Link } from "../Styles/StyledComponents"
-import { Box, Stack, Typography } from '@mui/material'
 import AvatarCard from './AvatarCard'
 
 const Chatitem = (
@@ -21,12 +21,11 @@ const Chatitem = (
                 alignItems: "center",
                 gap: "1rem",
                 padding: "13px",
-                backgroundColor: sameSender ? "Gray" : "unset",
-                color: sameSender ? "white" : "unset",
+                backgroundColor: sameSender ? "rgba(0,0,0,0.3)" : "unset",
+                color: "white",
                 fontWeight: "700",
                 position: "relative",
-                borderRadius: "1rem",
-                borderTop: "1px solid gray"
+                borderRadius: "0.7rem"
             }}>
                 <AvatarCard avatar={avatar} />
                 <Stack>

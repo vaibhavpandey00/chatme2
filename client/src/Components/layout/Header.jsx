@@ -55,10 +55,11 @@ const Header = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                height: { xs: "4rem", sm: "4rem" }
                 // border: "2px solid black"
-            }} height={"4rem"}>
+            }} >
 
-                <AppBar position="static" sx={{ bgcolor: "#ea7070" }}>
+                <AppBar position="static" sx={{ bgcolor: "#041A28", height: { xs: "4rem", sm: "4rem" } }}>
                     <Toolbar sx={{
                         justifyContent: "space-between"
                     }}>
