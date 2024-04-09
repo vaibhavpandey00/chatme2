@@ -1,12 +1,15 @@
 import { Add as AddIcon, Group as GroupIcon, Logout as LogoutIcon, Menu as MenuIcon, Notifications as NotificationIcon, Search as SearchIcon } from "@mui/icons-material";
 import { AppBar, Backdrop, Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material';
 import React, { Suspense, lazy, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const SearchDialog = lazy(() => import("../dialogs/Search"));
 const NotificationsDialog = lazy(() => import("../dialogs/Notifications"));
 const NewGroupDialog = lazy(() => import("../dialogs/NewGroup"));
 
 const Header = () => {
+
+    const navigate = useNavigate();
 
     const [isMobile, setIsMobile] = useState(false);
     const [isSearch, setIsSearch] = useState(false);
@@ -29,9 +32,7 @@ const Header = () => {
         setIsNotification(prev => !prev);
     }
 
-    const ManageGroup = () => {
-        console.log("ManageGroup");
-    }
+    const navigateToGroup = () => navigate("/groups")
 
     const logoutHandler = () => {
         console.log("logoutHandler");
@@ -88,7 +89,7 @@ const Header = () => {
 
                             <IconBtn
                                 title={"Manage Group"}
-                                onClick={ManageGroup}
+                                onClick={navigateToGroup}
                                 icon={<GroupIcon />} />
 
                             <IconBtn

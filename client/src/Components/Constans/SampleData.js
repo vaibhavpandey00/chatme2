@@ -103,14 +103,9 @@ export const sampleNotifications = [
 
 export const sampleMessage = [
     {
-        attachments: [
-            {
-                publick_id: "azxax",
-                url: "https://www.w3schools.com/howto/img_avatar.png",
-            },
-        ],
+        attachments: [],
         content: "Hay there! how are you..",
-        _id: "qwertyu",
+        _id: "qwertyu1",
         sender: {
             _id: "user._id",
             name: "Vibhu",
@@ -125,24 +120,30 @@ export const sampleMessage = [
                 url: "https://www.w3schools.com/howto/img_avatar.png",
             },
         ],
-        content: "Fine what about you..",
-        _id: "qwertyu",
+        content: "",
+        _id: "qwertyu2",
         sender: {
             _id: "asdcasd",
-            name: "Vibhu",
+            name: "Guest",
         },
         chat: "chatId",
         createdAt: "2024-04-02"
     },
     {
-        attachments: [
-            {
-                publick_id: "azxax",
-                url: "https://www.w3schools.com/howto/img_avatar.png",
-            },
-        ],
+        attachments: [],
+        content: "Fine what about you..",
+        _id: "qwertyu5",
+        sender: {
+            _id: "asdcasd",
+            name: "Guest",
+        },
+        chat: "chatId",
+        createdAt: "2024-04-02"
+    },
+    {
+        attachments: [],
         content: "Happy to hear that :)",
-        _id: "qwertyu",
+        _id: "qwertyu3",
         sender: {
             _id: "user._id",
             name: "Vibhu",
@@ -151,14 +152,9 @@ export const sampleMessage = [
         createdAt: "2024-04-03"
     },
     {
-        attachments: [
-            {
-                publick_id: "azxax",
-                url: "https://www.w3schools.com/howto/img_avatar.png",
-            },
-        ],
+        attachments: [],
         content: "Fine as well",
-        _id: "qwertyu",
+        _id: "qwertyu4",
         sender: {
             _id: "user._id",
             name: "Vibhu",

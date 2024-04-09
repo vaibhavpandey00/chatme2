@@ -42,7 +42,7 @@ const MessageComponent = ({ message, user }) => {
                             const file = fileFormat(url);
 
                             return <Box key={index} >
-                                <a href="" target="_blank" download style={{
+                                <a href={url} target="_blank" download style={{
                                     color: "black"
                                 }} > {RenderAttachment(file, url)} </a>
                             </Box>
