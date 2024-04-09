@@ -46,11 +46,13 @@ const Groups = () => {
     closeConfirmDelteHandler();
   }
 
-  const removeMemberHandler = (id) => {console.log("Remove Member ", id);}
+  const removeMemberHandler = (id) => { console.log("Remove Member ", id); }
 
   useEffect(() => {
-    setGroupName(`Group Name ${chatId}`);
-    setGroupNameUpdated(`Group Name ${chatId}`);
+    if (chatId) {
+      setGroupName(`Group Name ${chatId}`);
+      setGroupNameUpdated(`Group Name ${chatId}`);
+    }
     return () => {
       setGroupName("");
       setGroupNameUpdated("");
@@ -107,69 +109,80 @@ const Groups = () => {
         {IconBtns}
 
         {/* groupName */}
-        <Stack direction={"row"} alignItems={"center"} justifyContent={"center"} padding={"1rem"} >
-          {
-            isEdit ? <>
-              <TextField value={groupNameUpdated} onChange={e => setGroupNameUpdated(e.target.value)} />
-              <IconButton onClick={updateGroupName}>
-                <DoneIcon />
-              </IconButton>
-            </> : <>
-              <Typography variant="h5"  >
-                {groupName}
-              </Typography>
+        {
+          groupName && (
+            <>
+              <Stack direction={"row"} alignItems={"center"} justifyContent={"center"} padding={"1rem"} >
+                {
+                  isEdit ? <>
+                    <TextField value={groupNameUpdated} onChange={e => setGroupNameUpdated(e.target.value)} />
+                    <IconButton onClick={updateGroupName}>
+                      <DoneIcon />
+                    </IconButton>
+                  </> : <>
+                    <Typography variant="h5"  >
+                      {groupName}
+                    </Typography>
 
-              {groupName && <IconButton onClick={() => setIsEdit(true)}>
-                <EditIcon />
-              </IconButton>}
+                    {groupName && <IconButton onClick={() => setIsEdit(true)}>
+                      <EditIcon />
+                    </IconButton>}
+                  </>
+                }
+              </Stack>
+
+              <Typography margin={"2rem"} alignSelf={"flex-start"} variant="5" color="initial">Members</Typography>
+
+              <Stack
+                maxWidth={"45rem"}
+                width={"100%"}
+                boxSizing={"border-box"}
+                padding={{
+                  xs: "0",
+                  sm: "1rem",
+                  md: "1rem 4rem"
+                }}
+                spacing={"2rem"}
+                height={"50vh"}
+                overflow={"auto"}
+              >
+                {/* Members */}
+
+                {
+                  sampleUsers.map((i) => (
+                    <UserItem user={i} isAdded key={i._id} styling={{
+                      boxShadow: "0 0 0.5rem rgba(0,0,0,0.2)",
+                      padding: "1rem 2rem",
+                      borderRadius: "1rem"
+                    }} handler={removeMemberHandler} />
+                  ))
+                }
+              </Stack>
+
+              {/* ButtonGroup */}
+              <Stack
+                direction={{
+                  xs: "column-reverse",
+                  sm: "row"
+                }}
+                spacing={"1rem"}
+                padding={{
+                  xs: "0",
+                  sm: "1rem",
+                  md: "1rem 4rem"
+                }}
+              >
+                <Button size="large" variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={openConfirmDeleteHandler} >Delete Group</Button>
+                <Button size="large" variant="contained" startIcon={<AddIcon />} onClick={openAddMemberHandler} >Add Member</Button>
+              </Stack>
             </>
-          }
-        </Stack>
 
-        <Typography margin={"2rem"} alignSelf={"flex-start"} variant="5" color="initial">Members</Typography>
+          )
+        }
 
-        <Stack
-          maxWidth={"45rem"}
-          width={"100%"}
-          boxSizing={"border-box"}
-          padding={{
-            xs: "0",
-            sm: "1rem",
-            md: "1rem 4rem"
-          }}
-          spacing={"2rem"}
-          height={"50vh"}
-          overflow={"auto"}
-        >
-          {/* Members */}
 
-          {
-            sampleUsers.map((i)=>(
-              <UserItem user={i} isAdded key={i._id} styling={{
-                boxShadow: "0 0 0.5rem rgba(0,0,0,0.2)",
-                padding: "1rem 2rem",
-                borderRadius: "1rem"
-              }} handler={removeMemberHandler} />
-            ))
-          }
-        </Stack>
 
-        {/* ButtonGroup */}
-        <Stack
-          direction={{
-            xs: "column-reverse",
-            sm: "row"
-          }}
-          spacing={"1rem"}
-          padding={{
-            xs: "0",
-            sm: "1rem",
-            md: "1rem 4rem"
-          }}
-        >
-          <Button size="large" variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={openConfirmDeleteHandler} >Delete Group</Button>
-          <Button size="large" variant="contained" startIcon={<AddIcon />} onClick={openAddMemberHandler} >Add Member</Button>
-        </Stack>
+
 
       </Grid>
 
