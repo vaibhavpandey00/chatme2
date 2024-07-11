@@ -177,7 +177,7 @@ export const dashboradData = {
             name: "Isabella Garcia",
             avatar: "https://www.w3schools.com/howto/img_avatar.png",
             _id: "2",
-            username: "JoneDoe69",
+            username: "Jone69",
             friends: 89,
             groups: 21
         },
@@ -185,7 +185,7 @@ export const dashboradData = {
             name: "Michael Rogers",
             avatar: "https://www.w3schools.com/howto/img_avatar.png",
             _id: "3",
-            username: "JoneDoe69",
+            username: "Doe69",
             friends: 79,
             groups: 75
         }
@@ -212,9 +212,22 @@ export const dashboradData = {
             groupChat: true,
             members: [{ _id: "1", avatar: "https://www.w3schools.com/howto/img_avatar.png" }, { _id: "2", avatar: "https://www.w3schools.com/howto/img_avatar.png" }],
             totalMembers: 2,
-            totalMessages: 20,
+            totalMessages: 22,
             creator: {
-                name: "Jone Doe",
+                name: "John Summers",
+                avatar: "https://www.w3schools.com/howto/img_avatar.png"
+            }
+        },
+        {
+            name: "Cecelia Clark",
+            avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
+            _id: "3",
+            groupChat: false,
+            members: [{ _id: "1", avatar: "https://www.w3schools.com/howto/img_avatar.png" }, { _id: "2", avatar: "https://www.w3schools.com/howto/img_avatar.png" }],
+            totalMembers: 2,
+            totalMessages: 49,
+            creator: {
+                name: "Cecelia Clark",
                 avatar: "https://www.w3schools.com/howto/img_avatar.png"
             }
         }
@@ -248,6 +261,23 @@ export const dashboradData = {
             },
             chat: "chatId1",
             groupChat: false,
+            createdAt: "2024-03-10"
+        },
+        {
+            attachments: [
+                {
+                    publick_id: "azxax12",
+                    url: "https://www.w3schools.com/howto/img_avatar.png",
+                }
+            ],
+            content: "",
+            _id: "qwertyu2",
+            sender: {
+                avatar: "https://www.w3schools.com/howto/img_avatar.png",
+                name: "Jack Smith",
+            },
+            chat: "chatId3",
+            groupChat: true,
             createdAt: "2024-03-10"
         }
     ]

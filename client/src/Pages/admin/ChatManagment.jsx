@@ -1,9 +1,9 @@
 import { Avatar, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { dashboradData } from "../../Components/Constans/SampleData";
+import AdminLayout from '../../Components/layout/AdminLayout';
 import AvatarCard from "../../Components/Shared/AvatarCard";
 import Table from '../../Components/Shared/Table';
-import AdminLayout from '../../Components/layout/AdminLayout';
 import { transformImage } from "../../lib/Features";
 
 
@@ -38,6 +38,7 @@ const columns = [
         headerName: 'Members',
         headerClassName: "table-header",
         width: 400,
+
         renderCell: (params) => <AvatarCard max={100} avatar={params.row.members} />
     },
     {
@@ -52,13 +53,14 @@ const columns = [
         headerClassName: "table-header",
         width: 250,
         renderCell: (params) => (
-            <Stack direction={"row"} alignContent={"center"} spacing={"1rem"} >
+            <Stack direction="row" alignItems="center" spacing={"1rem"}>
                 <Avatar alt={params.row.creator.name} src={params.row.creator.avatar} />
                 <span>{params.row.creator.name}</span>
             </Stack>
         )
     },
 ]
+
 const ChatManagment = () => {
 
     const [rows, setRows] = useState([]);
@@ -67,8 +69,8 @@ const ChatManagment = () => {
         setRows(dashboradData.chats.map((chat) => ({
             ...chat,
             id: chat._id,
-            avatar: chat.avatar.map((avatar) => (transformImage(avatar, 50))),
-            members: chat.members.map((member) => (transformImage(member.avatar, 50))),
+            avatar: chat.avatar.map((avatar) => transformImage(avatar, 50)),
+            members: chat.members.map((member) => transformImage(member.avatar, 50)),
             creator: {
                 name: chat.creator.name,
                 avatar: transformImage(chat.creator.avatar, 50)
@@ -83,5 +85,6 @@ const ChatManagment = () => {
         </AdminLayout>
     )
 }
+
 
 export default ChatManagment

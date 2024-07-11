@@ -24,28 +24,27 @@ const columns = [
 
             const { attachments } = params.row;
 
-            return attachments?.length > 0 ? attachments.map(i => {
-
-                const url = i.url;
+            return attachments.length > 0 
+            ? attachments.map((attachment) => {
+                const url = attachment.url;
                 const file = fileFormat(url);
 
-                return <Box >
-                    <a href={url}
-                        target="_blank"
-                        download
-                        style={{
-                            color: "black",
-                        }}
-                    > {RenderAttachment(file, url)} </a>
+                return <Box style={{ display: "flex", alignItems: "center", justifyContent: "center" }} >
+                    <a href={url} target="_blank" download style={{color: "black"}}>
+                        {RenderAttachment(file, url)}
+                    </a>
                 </Box>
-            }) : "No Attachments"
+            }) : "No Attachment" 
         }
     },
     {
-        field: 'contest',
+        field: 'content',
         headerName: 'Content',
         headerClassName: "table-header",
-        width: 400
+        width: 400,
+        renderCell: (params) => {
+            return params.row.content?.length > 0 ? params.row.content : "No Content"
+        }
     },
     {
         field: 'sender',
@@ -53,8 +52,8 @@ const columns = [
         headerClassName: "table-header",
         width: 200,
         renderCell: (params) => (
-            <Stack >
-                <Avatar alt={params.row.sender.name} src={params.row.sender.avatar} />
+            <Stack direction={"row"} spacing={"1rem"} alignItems={"center"} >
+                <Avatar alt={params.row.name} src={params.row.sender.avatar} />
                 <span>{params.row.sender.name}</span>
             </Stack>
         )
@@ -97,7 +96,7 @@ const MessageManagment = () => {
 
     return (
         <AdminLayout >
-            <Table heading="All Messages" columns={columns} rows={rows} rowHeight={200} />
+            <Table heading="All Messages" columns={columns} rows={rows} rowsHeight={200} />
         </AdminLayout>
     )
 }

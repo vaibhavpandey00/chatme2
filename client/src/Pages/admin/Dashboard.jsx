@@ -35,8 +35,8 @@ const Dashboard = () => {
     const Widgets = () => <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing="2rem"
-        justifyContent={"space-between"}
-        alignContent={"center"}
+        justifyContent="space-between"
+        alignItems={"center"}
         margin={"2rem 0"}
     >
 
@@ -48,8 +48,10 @@ const Dashboard = () => {
     return (
         <AdminLayout >
             <Container component={"main"}>
+                {/* App Bar or Navigation */}
                 {AppBar}
 
+                {/* Line Chart */}
                 <Stack direction={{ xs: "column", lg: "row" }} gap={"2rem"} flexWrap={"wrap"} justifyContent={"center"} alignItems={{ xs: "center", lg: "stretch" }} >
                     <Paper elevation={3} sx={{
                         padding: "2rem 3.5rem",
@@ -58,9 +60,10 @@ const Dashboard = () => {
                         maxWidth: "45rem",
                     }}>
                         <Typography variant="h4" margin={"2rem 0"} >Last Messages</Typography>
-                        <LineChart value={[23, 10, 55, 70, 30]} />
+                        <LineChart value={[23, 10, 55, 70, 30, 45, 40]} />
                     </Paper>
 
+                    {/* Doughnut Chart */}
                     <Paper elevation={3}
                         sx={{
                             display: "flex",
@@ -99,7 +102,7 @@ const Widget = ({ title, value, Icon }) => <Paper
     sx={{
         padding: "2rem",
         margin: "2rem 0",
-        borderRadius: "1rem",
+        borderRadius: "1.5rem",
         width: "20rem",
     }} elevation={3}
 >
