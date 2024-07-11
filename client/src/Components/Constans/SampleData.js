@@ -162,3 +162,93 @@ export const sampleMessage = [
         createdAt: "2024-04-03"
     },
 ]
+
+export const dashboradData = {
+    users: [
+        {
+            name: "Jone Doe",
+            avatar: "https://www.w3schools.com/howto/img_avatar.png",
+            _id: "1",
+            username: "JoneDoe69",
+            friends: 20,
+            groups: 5
+        },
+        {
+            name: "Isabella Garcia",
+            avatar: "https://www.w3schools.com/howto/img_avatar.png",
+            _id: "2",
+            username: "JoneDoe69",
+            friends: 89,
+            groups: 21
+        },
+        {
+            name: "Michael Rogers",
+            avatar: "https://www.w3schools.com/howto/img_avatar.png",
+            _id: "3",
+            username: "JoneDoe69",
+            friends: 79,
+            groups: 75
+        }
+    ],
+
+    chats: [
+        {
+            name: "Evan Turner",
+            avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
+            _id: "1",
+            groupChat: true,
+            members: [{ _id: "1", avatar: "https://www.w3schools.com/howto/img_avatar.png" }, { _id: "2", avatar: "https://www.w3schools.com/howto/img_avatar.png" }],
+            totalMembers: 2,
+            totalMessages: 20,
+            creator: {
+                name: "Jone Doe",
+                avatar: "https://www.w3schools.com/howto/img_avatar.png"
+            }
+        },
+        {
+            name: "John Summers",
+            avatar: ["https://www.w3schools.com/howto/img_avatar.png"],
+            _id: "2",
+            groupChat: true,
+            members: [{ _id: "1", avatar: "https://www.w3schools.com/howto/img_avatar.png" }, { _id: "2", avatar: "https://www.w3schools.com/howto/img_avatar.png" }],
+            totalMembers: 2,
+            totalMessages: 20,
+            creator: {
+                name: "Jone Doe",
+                avatar: "https://www.w3schools.com/howto/img_avatar.png"
+            }
+        }
+    ],
+
+    messages: [
+        {
+            attachments: [],
+            content: "Hey there! how are you..",
+            _id: "qwertyu",
+            sender: {
+                avatar: "https://www.w3schools.com/howto/img_avatar.png",
+                name: "Owen Brewer",
+            },
+            chat: "chatId",
+            groupChat: false,
+            createdAt: "2024-03-10"
+        },
+        {
+            attachments: [
+                {
+                    publick_id: "azxax11",
+                    url: "https://www.w3schools.com/howto/img_avatar.png",
+                }
+            ],
+            content: "M** Ch*da",
+            _id: "qwertyu1",
+            sender: {
+                avatar: "https://www.w3schools.com/howto/img_avatar.png",
+                name: "Shane Jensen",
+            },
+            chat: "chatId1",
+            groupChat: false,
+            createdAt: "2024-03-10"
+        }
+    ]
+}
