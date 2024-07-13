@@ -15,8 +15,11 @@ const connDB = async (uri) => {
     }
 }
 
-export default connDB;
+
+const sendToken = (res, user, code, message) => { }
+
+export { connDB, sendToken };
 
 // mongoose.connection.on("error", (err) => {
-    //     console.log(err);
-    // });
+//     console.log(err);
+// });

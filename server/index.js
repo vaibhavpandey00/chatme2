@@ -1,19 +1,20 @@
 import express from "express";
 import userRoutes from "./routes/user.routes.js";
-// import { connDB } from "./utils/features.js";
+import { connDB } from "./utils/features.js";
 import dotenv from "dotenv";
 
 dotenv.config();
-
 const MongoURI = process.env.MONGO_URI;
 
 // Continue from 5234
 
 const app = express();
+
+// Using Middleware here to parse json
 app.use(express.json());
 
 // Database Connection and start server
-// connDB(process.env.MONGO_URI);
+connDB(MongoURI);
 
 const PORT = process.env.PORT || 3000;
 
