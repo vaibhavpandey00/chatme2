@@ -1,4 +1,12 @@
 import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
+
+const cookieOptions = {
+    maxAge: 4 * 60 * 60 * 24 * 1000,
+    httpOnly: true,
+    sameSite: "none",
+    secure: true
+}
 
 const connDB = async (uri) => {
 
@@ -16,7 +24,17 @@ const connDB = async (uri) => {
 }
 
 
-const sendToken = (res, user, code, message) => { }
+const sendToken = (res, user, code, message) => {
+    const token = jwt.sign({ _id: user._id.toString(), email: user.email }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE });
+
+    return res.status(code).cookie("ChatME_token", token, cookieOptions).json({
+        success: true,
+        message
+    })
+}
+
+// Test function to send token
+// sendToken("ChatME_token", "token", cookieOptions, "Login successful");
 
 export { connDB, sendToken };
 
