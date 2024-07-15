@@ -36,7 +36,11 @@ const sendToken = (res, user, code, message) => {
 // Test function to send token
 // sendToken("ChatME_token", "token", cookieOptions, "Login successful");
 
-export { connDB, sendToken };
+const emitEvent = (req, event, users, data) => {
+    console.log("emitEvent", event, users, data);
+}
+
+export { connDB, sendToken, emitEvent };
 
 // mongoose.connection.on("error", (err) => {
 //     console.log(err);

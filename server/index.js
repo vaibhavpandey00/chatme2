@@ -2,13 +2,14 @@ import express from "express";
 import userRoutes from "./routes/user.routes.js";
 import chatRoutes from "./routes/chat.routes.js";
 import { connDB } from "./utils/features.js";
+import createUser from "./seeders/user.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
 const MongoURI = process.env.MONGO_URI;
 
-// Continue from 15500
+// Continue from 30200 Send Attachments
 
 const app = express();
 
@@ -20,6 +21,9 @@ app.use(cookieParser());
 connDB(MongoURI);
 
 const PORT = process.env.PORT || 3000;
+
+// Create Fake Users using faker and seeders
+// createUser(10);
 
 // Routes 
 app.use("/api", userRoutes);

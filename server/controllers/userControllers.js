@@ -122,9 +122,9 @@ const logout = (req, res) => {
 const searchUser = async (req, res) => {
 
     try {
-        const {name} = req.query;
+        const { name } = req.query;
 
-        return res.status(200).json({success: true, message : name})
+        return res.status(200).json({ success: true, message: name })
 
     } catch (error) {
         res.status(500).json({ message: error.message });
