@@ -32,4 +32,8 @@ const createUser = async (numUsers) => {
     }
 }
 
-export default createUser;
+const createSampleChats = async (numChats) => {
+    // create sample chats
+}
+
+export { createUser };

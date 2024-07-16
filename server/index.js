@@ -2,14 +2,15 @@ import express from "express";
 import userRoutes from "./routes/user.routes.js";
 import chatRoutes from "./routes/chat.routes.js";
 import { connDB } from "./utils/features.js";
-import createUser from "./seeders/user.js";
+import {createUser} from "./seeders/user.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
 const MongoURI = process.env.MONGO_URI;
 
-// Continue from 30200 Send Attachments
+// Continue from 34500 Get Messages might face error
+// Continue from 40700
 
 const app = express();
 

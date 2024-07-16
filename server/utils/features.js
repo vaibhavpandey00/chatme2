@@ -40,7 +40,12 @@ const emitEvent = (req, event, users, data) => {
     console.log("emitEvent", event, users, data);
 }
 
-export { connDB, sendToken, emitEvent };
+const deleteFilesFromCloud = async (public_ids) => {
+    // Upload files to cloudinary
+    console.log("deleteFilesFromCloud", public_ids);
+}
+
+export { connDB, sendToken, emitEvent, deleteFilesFromCloud };
 
 // mongoose.connection.on("error", (err) => {
 //     console.log(err);
