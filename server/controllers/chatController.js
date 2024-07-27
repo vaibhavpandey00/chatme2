@@ -15,10 +15,6 @@ const newGroupChat = async (req, res) => {
 
         console.log(name, members);
 
-        if (members.length < 2) {
-            return res.status(400).json({ success: false, message: "Please select at least 3 members" });
-        };
-
         const allMembers = [ req.user, ...members ];
 
         await Chat.create({
@@ -95,10 +91,6 @@ const addMembers = async (req, res) => {
 
         const { chatId, members } = req.body;
         const chat = await Chat.findById(chatId);
-
-        if (!members || members.length < 1) {
-            return res.status(400).json({ success: false, message: "Please select at least 1 member" });
-        }
 
         if (!chat) {
             return res.status(404).json({ success: false, message: "Chat not found" });

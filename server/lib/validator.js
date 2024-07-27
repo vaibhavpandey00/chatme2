@@ -1,4 +1,17 @@
-import { body, check, validationResult, } from "express-validator";
+import { body, check, validationResult, param, query } from "express-validator";
+
+
+const validatorHandler = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+
+        const messages = errors.array().map(({ msg }) => msg);
+        const errMsg = messages.join(", ");
+
+        return res.status(400).json({ success: false, message: errMsg });
+    }
+    next();
+};
 
 const registerValidator = () => [
     body([ "name", "email", "password" ])
@@ -16,16 +29,50 @@ const loginValidator = () => [
     body("email").isEmail().withMessage("Invalid email"),
 ]
 
-const validatorHandler = (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
+const newGroupValidator = () => [
+    body("name", "Please enter group name").notEmpty(),
+    body("members").notEmpty().withMessage("Please select members").isArray({ min: 2 }).withMessage("Please select at least 2 members"),
+]
 
-        const messages = errors.array().map(({ msg }) => msg);
-        const errMsg = messages.join(", ");
+const addMembersValidator = () => [
+    body("chatId", "Please enter Chat ID").notEmpty(),
+    body("members").notEmpty().withMessage("Please enter members").isArray({ min: 1 }).withMessage("Please select at least 1-97 member"),
+]
 
-        return res.status(400).json({ success: false, message: errMsg });
-    }
-    next();
-};
+const removeMembersValidator = () => [
+    body("chatId", "Please enter Chat ID").notEmpty(),
+    body("userId").notEmpty().withMessage("Please enter User ID"),
+]
 
-export { registerValidator, loginValidator, validatorHandler }
+const leaveGroupValidator = () => [
+    param("id", "Please enter Chat ID").notEmpty(),
+]
+
+const sendAttachmentValidator = () => [
+    body("chatId", "Please enter Chat ID").notEmpty(),
+    check("files").notEmpty().withMessage("Please upload attachments").isArray({ min: 1, max: 5 }).withMessage("Please upload at least 1 attachment"),
+]
+
+const getMessagesValidator = () => [
+    param("id").notEmpty().withMessage("Please enter Chat ID"),
+]
+
+const getChatDetailsValidator = () => [
+    param("id").notEmpty().withMessage("Please enter Chat ID"),
+]
+
+const renameGroupValidator = () => [
+    param("id").notEmpty().withMessage("Please enter Chat ID"),
+    body("name", "Please enter new group name").notEmpty(),
+]
+
+const sendRequestValidator = () => [
+    body("userId", "Please enter User ID").notEmpty(),
+]
+
+const acceptRequestValidator = () => [
+    body("requestId", "Please enter Request ID").notEmpty(),
+    body("accept").notEmpty().withMessage("Please Add Accept").isBoolean().withMessage("Accept must be boolean"),
+]
+
+export { registerValidator, loginValidator, validatorHandler, newGroupValidator, addMembersValidator, removeMembersValidator, leaveGroupValidator, sendAttachmentValidator, getMessagesValidator, getChatDetailsValidator, renameGroupValidator, sendRequestValidator, acceptRequestValidator }
