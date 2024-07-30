@@ -1,9 +1,9 @@
-import { Chat } from "../models/chatModel.js";
-import { deleteFilesFromCloud, emitEvent } from "../utils/features.js";
 import { ALERT, NEW_ATTACHMENT, NEW_MESSAGE, REFETCH_CHATS } from "../constants/events.js";
 import { getOtherMember } from "../lib/helper.js";
-import { User } from "../models/userModel.js";
+import { Chat } from "../models/chatModel.js";
 import { Message } from "../models/messageModel.js";
+import { User } from "../models/userModel.js";
+import { deleteFilesFromCloud, emitEvent } from "../utils/features.js";
 
 
 // Funtion to create new group chat
@@ -224,14 +224,14 @@ const sentAttachment = async (req, res) => {
 
         const { chatId } = req.body;
 
+        const files = req.files || [];
+
         const [ chat, me ] = await Promise.all([
             Chat.findById(chatId), User.findById(req.user, "name") ]);
 
         if (!chat) {
             return res.status(404).json({ success: false, message: "Chat not found" });
         };
-
-        const files = req.files || [];
 
         if (files.length < 1 || files.length > 5) {
             return res.status(400).json({ success: false, message: "Please select between 1 and 5 files" });
@@ -424,4 +424,4 @@ const getMessages = async (req, res) => {
     }
 }
 
-export { newGroupChat, getMyChats, getMyGroups, addMembers, removeMembers, leaveGroup, sentAttachment, getChatDetails, renameGroup, deleteChat, getMessages }
+export { addMembers, deleteChat, getChatDetails, getMessages, getMyChats, getMyGroups, leaveGroup, newGroupChat, removeMembers, renameGroup, sentAttachment };

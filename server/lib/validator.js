@@ -18,8 +18,7 @@ const registerValidator = () => [
         .notEmpty()
         .withMessage("All fields are required"),
     body("email").isEmail().withMessage("Invalid email"),
-    body("password").isLength({ min: 6 }).withMessage("Password must be at least 6 characters long"),
-    check("avatar").notEmpty().withMessage("Please upload your avatar"),
+    body("password").isLength({ min: 6 }).withMessage("Password must be at least 6 characters long")
 ]
 
 const loginValidator = () => [
@@ -49,8 +48,7 @@ const leaveGroupValidator = () => [
 ]
 
 const sendAttachmentValidator = () => [
-    body("chatId", "Please enter Chat ID").notEmpty(),
-    check("files").notEmpty().withMessage("Please upload attachments").isArray({ min: 1, max: 5 }).withMessage("Please upload at least 1 attachment"),
+    body("chatId", "Please enter Chat ID").notEmpty()
 ]
 
 const getMessagesValidator = () => [
@@ -75,4 +73,8 @@ const acceptRequestValidator = () => [
     body("accept").notEmpty().withMessage("Please Add Accept").isBoolean().withMessage("Accept must be boolean"),
 ]
 
-export { registerValidator, loginValidator, validatorHandler, newGroupValidator, addMembersValidator, removeMembersValidator, leaveGroupValidator, sendAttachmentValidator, getMessagesValidator, getChatDetailsValidator, renameGroupValidator, sendRequestValidator, acceptRequestValidator }
+const adminLoginValidator = () => [
+    body("secretKey", "Please enter the Admin Key").notEmpty(),
+]
+
+export { registerValidator, loginValidator, validatorHandler, newGroupValidator, addMembersValidator, removeMembersValidator, leaveGroupValidator, sendAttachmentValidator, getMessagesValidator, getChatDetailsValidator, renameGroupValidator, sendRequestValidator, acceptRequestValidator, adminLoginValidator }

@@ -16,7 +16,12 @@ const register = async (req, res) => {
 
         const { name, email, password, bio } = req.body;
 
+        const userFile = req.file;
         // console.log(req.body);
+
+        if (!userFile) {
+            return res.status(400).json({ success: false, message: "Avatar is required" });
+        }
 
         if (name && email && password) {
 
@@ -69,7 +74,7 @@ const login = async (req, res) => {
         console.log(`email: ${email}, password: ${password}`);
 
         if (!email || !password) {
-            return res.status(400).json({ message: "All fields are required" });
+            return res.status(400).json({ success: false, message: "All fields are required" });
         }
 
         if (email && password) {
@@ -95,13 +100,13 @@ const login = async (req, res) => {
                 // 2nd method
                 sendToken(res, user, 200, `Welcome Back, ${user.name}`);
             } else {
-                return res.status(400).json({ message: "Invalid credentials" });
+                return res.status(400).json({ success: false, message: "Invalid credentials" });
             }
 
         }
 
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -243,7 +248,6 @@ const getMyFriends = async (req, res) => {
 
         const friends = chats.map(({ members }) => {
             const otherUser = getOtherMember(members, req.user);
-
             return {
                 _id: otherUser._id,
                 name: otherUser.name,
@@ -255,6 +259,10 @@ const getMyFriends = async (req, res) => {
 
             const chat = await Chat.findById(chatId);
 
+            // Filtering out the friends who are not in the chat
+            // This is throwing error error (cannot read property of null 'reading members')
+
+
             const availableFriends = friends.filter((friend) => !chat.members.includes(friend._id));
 
             return res.status(200).json({ success: true, friends: availableFriends });
@@ -265,9 +273,10 @@ const getMyFriends = async (req, res) => {
         }
 
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({ success: false, message: error.message });
     }
 }
+
 
 
 export { login, register, getMyProfile, logout, searchUser, sendRequest, acceptRequest, getNotifications, getMyFriends }
